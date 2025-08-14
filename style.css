@@ -1,0 +1,57 @@
+/* Common Styles */
+.welcome-card {
+    transition: all 0.3s ease;
+}
+
+.welcome-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.choice-btn {
+    transition: all 0.3s ease;
+}
+
+.choice-btn:hover {
+    transform: scale(1.05);
+}
+
+.floating-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.food-card {
+    transition: all 0.3s ease;
+}
+
+.food-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.category-section {
+    scroll-margin-top: 100px;
+}
+
+.quantity-btn {
+    transition: all 0.2s ease;
+}
+
+.quantity-btn:hover {
+    transform: scale(1.1);
+}
+
+.order-btn {
+    transition: all 0.3s ease;
+}
+
+.order-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
