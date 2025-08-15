@@ -3,99 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Delicious Bites</title>
+    <title>Delicious Bites - Premium Restaurant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gradient-to-br from-orange-400 via-red-500 to-pink-600 min-h-screen">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-10 left-10 text-6xl floating-animation">🍕</div>
-        <div class="absolute top-20 right-20 text-5xl floating-animation" style="animation-delay: 0.5s;">🍔</div>
-        <div class="absolute bottom-20 left-20 text-4xl floating-animation" style="animation-delay: 1s;">🍰</div>
-        <div class="absolute bottom-10 right-10 text-6xl floating-animation" style="animation-delay: 1.5s;">🥗</div>
-        <div class="absolute top-1/2 left-1/4 text-5xl floating-animation" style="animation-delay: 2s;">🍗</div>
-        <div class="absolute top-1/3 right-1/3 text-4xl floating-animation" style="animation-delay: 2.5s;">🥤</div>
-    </div>
-
-    <div class="relative z-10 min-h-screen flex items-center justify-center px-4">
-        <div class="welcome-card bg-white rounded-3xl shadow-2xl p-12 max-w-2xl w-full text-center">
-            <!-- Restaurant Logo/Name -->
-            <div class="mb-8">
-                <h1 class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600 mb-4">
-                    🍽️ Delicious Bites
-                </h1>
-                <div class="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto rounded-full"></div>
-            </div>
-
-            <!-- Welcome Message -->
-            <div class="mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Welcome to Our Restaurant!</h2>
-                <p class="text-lg text-gray-600 leading-relaxed">
-                    Experience the finest flavors crafted with love and passion. From farm-fresh ingredients to 
-                    expertly prepared dishes, we bring you an unforgettable dining experience.
-                </p>
-                <div class="flex justify-center items-center space-x-6 mt-6">
-                    <div class="flex items-center text-gray-700">
-                        <span class="text-2xl mr-2">⭐</span>
-                        <span class="font-semibold">4.8 Rating</span>
-                    </div>
-                    <div class="flex items-center text-gray-700">
-                        <span class="text-2xl mr-2">🚚</span>
-                        <span class="font-semibold">30 min delivery</span>
-                    </div>
-                    <div class="flex items-center text-gray-700">
-                        <span class="text-2xl mr-2">👨‍🍳</span>
-                        <span class="font-semibold">Expert Chefs</span>
-                    </div>
+<body class="bg-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center">
+                    <h1 class="text-4xl font-bold text-orange-600">🍽️ Delicious Bites</h1>
                 </div>
-            </div>
-
-            <!-- Food Preference Selection -->
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold text-gray-800 mb-6">Choose Your Preference</h3>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Vegetarian Option -->
-                    <button onclick="goToMenu('veg')" class="choice-btn group">
-                        <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-2xl p-8 text-white hover:from-green-500 hover:to-green-700">
-                            <div class="text-6xl mb-4">🥗</div>
-                            <h4 class="text-2xl font-bold mb-2">Vegetarian</h4>
-                            <p class="text-green-100 mb-4">Fresh, healthy, and delicious plant-based options</p>
-                            <div class="bg-white bg-opacity-20 rounded-lg p-2 text-sm">
-                                <span>🌱 100% Plant-Based • 🥬 Fresh Ingredients</span>
-                            </div>
-                        </div>
-                    </button>
-
-                    <!-- Non-Vegetarian Option -->
-                    <button onclick="goToMenu('non-veg')" class="choice-btn group">
-                        <div class="bg-gradient-to-br from-red-400 to-red-600 rounded-2xl p-8 text-white hover:from-red-500 hover:to-red-700">
-                            <div class="text-6xl mb-4">🍖</div>
-                            <h4 class="text-2xl font-bold mb-2">Non-Vegetarian</h4>
-                            <p class="text-red-100 mb-4">Premium meats and seafood prepared to perfection</p>
-                            <div class="bg-white bg-opacity-20 rounded-lg p-2 text-sm">
-                                <span>🥩 Premium Cuts • 🐟 Fresh Seafood</span>
-                            </div>
-                        </div>
-                    </button>
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-600">📞 +91 98765 43210</span>
+                    <span class="text-gray-600">📍 123 Food Street, Mumbai</span>
                 </div>
-            </div>
-
-            <!-- View All Menu Button -->
-            <div class="border-t border-gray-200 pt-6">
-                <button onclick="goToMenu('all')" class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-orange-600 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
-                    🍽️ View Complete Menu
-                </button>
-                <p class="text-gray-500 text-sm mt-2">Browse all our delicious offerings</p>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Footer Info -->
-    <div class="absolute bottom-4 left-0 right-0 text-center text-white text-sm opacity-75">
-        <p>📍 123 Food Street, City | 📞 (555) 123-4567 | 🕒 Open Daily 9 AM - 11 PM</p>
-    </div>
+    <!-- Hero Section -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="welcome-card bg-white rounded-3xl shadow-2xl p-12 mx-4">
+                <div class="mb-8">
+                    <h2 class="text-6xl font-bold text-gray-800 mb-4">Welcome to</h2>
+                    <h3 class="text-5xl font-bold text-orange-600 mb-6">🍽️ Delicious Bites</h3>
+                    <p class="text-xl text-gray-600 mb-8">Experience culinary excellence with our carefully crafted dishes made from the finest ingredients</p>
+                </div>
 
-    <script src="script.js"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96f14820c78a3dfd',t:'MTc1NTE4MzIwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+                <!-- Food Preference Selection -->
+                <div class="mb-12">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-8">Choose Your Dining Preference</h4>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        
+                        <!-- Vegetarian Option -->
+                        <div class="preference-card bg-gradient-to-br from-green-400 to-green-600 rounded-2xl p-8 text-white cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="goToMenu('veg')">
+                            <div class="text-6xl mb-4">🌱</div>
+                            <h5 class="text-2xl font-bold mb-3">Vegetarian</h5>
+                            <p class="text-green-100 mb-4">Fresh, healthy plant-based cuisine</p>
+                            <div class="bg-white text-green-600 px-4 py-2 rounded-full font-semibold">
+                                18+ Items Available
+                            </div>
+                        </div>
+
+                        <!-- Non-Vegetarian Option -->
+                        <div class="preference-card bg-gradient-to-br from-red-500 to-red-700 rounded-2xl p-8 text-white cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="goToMenu('non-veg')">
+                            <div class="text-6xl mb-4">🍖</div>
+                            <h5 class="text-2xl font-bold mb-3">Non-Vegetarian</h5>
+                            <p class="text-red-100 mb-4">Premium meats and seafood dishes</p>
+                            <div class="bg-white text-red-600 px-4 py-2 rounded-full font-semibold">
+                                17+ Items Available
+                            </div>
+                        </div>
+
+                        <!-- Complete Menu Option -->
+                        <div class="preference-card bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-8 text-white cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="goToMenu('complete')">
+                            <div class="text-6xl mb-4">🍽️</div>
+                            <h5 class="text-2xl font-bold mb-3">Complete Menu</h5>
+                            <p class="text-purple-100 mb-4">Browse our entire collection</p>
+                            <div class="bg-white text-purple-600 px-4 py-2 rounded-full font-semibold">
+                                35+ Items Available
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="grid md:grid-cols-4 gap-6 text-center">
+                    <div class="feature-item">
+                        <div class="text-4xl mb-3">⭐</div>
+                        <h6 class="font-bold text-gray-800">Premium Quality</h6>
+                        <p class="text-gray-600 text-sm">Finest ingredients</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="text-4xl mb-3">🚚</div>
+                        <h6 class="font-bold text-gray-800">Fast Delivery</h6>
+                        <p class="text-gray-600 text-sm">30-45 minutes</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="text-4xl mb-3">👨‍🍳</div>
+                        <h6 class="font-bold text-gray-800">Expert Chefs</h6>
+                        <p class="text-gray-600 text-sm">Professional cooking</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="text-4xl mb-3">💯</div>
+                        <h6 class="font-bold text-gray-800">100% Fresh</h6>
+                        <p class="text-gray-600 text-sm">Daily preparation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">🍽️ Delicious Bites</h3>
+            <p class="text-gray-400 mb-6">Serving exceptional cuisine since 2020</p>
+            <div class="flex justify-center space-x-8">
+                <span class="text-gray-400">📞 +91 98765 43210</span>
+                <span class="text-gray-400">📧 info@deliciousbites.com</span>
+                <span class="text-gray-400">📍 123 Food Street, Mumbai</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation function to go to different menu pages
+        function goToMenu(type) {
+            switch(type) {
+                case 'veg':
+                    window.location.href = 'veg-menu.html';
+                    break;
+                case 'non-veg':
+                    window.location.href = 'non-veg-menu.html';
+                    break;
+                case 'complete':
+                    window.location.href = 'complete-menu.html';
+                    break;
+                default:
+                    window.location.href = 'complete-menu.html';
+            }
+        }
+
+        // Function to go home (used by other pages)
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        // Function to open food detail page
+        function openFoodDetail(foodId) {
+            window.location.href = `food-detail.html?food=${foodId}`;
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96f9f69ad76da3b1',t:'MTc1NTI3NDIzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

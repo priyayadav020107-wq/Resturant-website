@@ -9,31 +9,526 @@
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="bg-white shadow-lg">
+    <header class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
                     <button onclick="goBack()" class="mr-4 text-gray-600 hover:text-orange-600 text-2xl">←</button>
-                    <h1 class="text-2xl font-bold text-orange-600">🍽️ Delicious Bites</h1>
+                    <h1 class="text-3xl font-bold text-orange-600">🍽️ Delicious Bites</h1>
                 </div>
-                <div class="flex space-x-4">
-                    <button onclick="goHome()" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">
+                <div class="flex items-center space-x-4">
+                    <button onclick="goHome()" class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700">
                         Home
-                    </button>
-                    <button onclick="goBack()" class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700">
-                        Back to Menu
                     </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="max-w-6xl mx-auto px-4 py-8">
-        <div id="foodDetails" class="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <!-- Content will be loaded by JavaScript -->
+    <!-- Food Detail Content -->
+    <div class="max-w-4xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            
+            <!-- Food Image -->
+            <div id="food-image" class="h-96 bg-gradient-to-br from-orange-400 to-red-600 flex items-center justify-center">
+                <div class="text-8xl">🍽️</div>
+            </div>
+
+            <!-- Food Information -->
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 id="food-name" class="text-4xl font-bold text-gray-800 mb-2">Food Item</h2>
+                        <div class="flex items-center space-x-4">
+                            <span id="food-category" class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-semibold">Category</span>
+                            <span id="food-type" class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold">VEG</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span id="food-price" class="text-4xl font-bold text-orange-600">₹999</span>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Description</h3>
+                    <p id="food-description" class="text-gray-600 text-lg leading-relaxed">
+                        Delicious food item prepared with the finest ingredients and expert culinary techniques.
+                    </p>
+                </div>
+
+                <!-- Ingredients -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Key Ingredients</h3>
+                    <div id="food-ingredients" class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Fresh Ingredients</span>
+                    </div>
+                </div>
+
+                <!-- Nutritional Info -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Nutritional Information</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <div id="calories" class="text-2xl font-bold text-orange-600">350</div>
+                            <div class="text-gray-600 text-sm">Calories</div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <div id="protein" class="text-2xl font-bold text-green-600">15g</div>
+                            <div class="text-gray-600 text-sm">Protein</div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <div id="carbs" class="text-2xl font-bold text-blue-600">45g</div>
+                            <div class="text-gray-600 text-sm">Carbs</div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <div id="fat" class="text-2xl font-bold text-purple-600">12g</div>
+                            <div class="text-gray-600 text-sm">Fat</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Allergen Information -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Allergen Information</h3>
+                    <div id="allergens" class="flex flex-wrap gap-2">
+                        <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">May contain traces of nuts</span>
+                    </div>
+                </div>
+
+                <!-- Chef's Note -->
+                <div class="mb-8 bg-orange-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+                        👨‍🍳 Chef's Note
+                    </h3>
+                    <p id="chef-note" class="text-gray-700 italic">
+                        "This dish is prepared with love and attention to detail, using traditional cooking methods to bring out the best flavors."
+                    </p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="flex-1 bg-orange-600 text-white px-8 py-4 rounded-lg hover:bg-orange-700 font-semibold text-lg transition-colors">
+                        🛒 Add to Cart
+                    </button>
+                    <button class="flex-1 bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 font-semibold text-lg transition-colors">
+                        📞 Order Now
+                    </button>
+                    <button onclick="goBack()" class="flex-1 bg-gray-600 text-white px-8 py-4 rounded-lg hover:bg-gray-700 font-semibold text-lg transition-colors">
+                        ← Back to Menu
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
-</body>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">🍽️ Delicious Bites</h3>
+            <p class="text-gray-400 mb-6">Serving exceptional cuisine since 2020</p>
+            <div class="flex justify-center space-x-6">
+                <span class="text-gray-400">📞 +91 98765 43210</span>
+                <span class="text-gray-400">📧 info@deliciousbites.com</span>
+                <span class="text-gray-400">📍 123 Food Street, Mumbai</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Food data with all items from version 11 menus
+        const foodData = {
+            // Vegetarian Appetizers
+            'caesar-salad': {
+                name: 'Caesar Salad',
+                price: '₹999',
+                description: 'Fresh romaine lettuce tossed with our signature Caesar dressing, topped with parmesan cheese, croutons, and a hint of lemon. A classic appetizer that never goes out of style.',
+                image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop&crop=center',
+                category: 'Fresh',
+                type: 'VEG',
+                ingredients: ['Romaine Lettuce', 'Parmesan Cheese', 'Croutons', 'Caesar Dressing', 'Lemon'],
+                calories: 280,
+                protein: '8g',
+                carbs: '15g',
+                fat: '22g',
+                allergens: ['Contains Dairy', 'Contains Gluten'],
+                chefNote: 'Our Caesar salad uses authentic Worcestershire sauce and fresh parmesan for that perfect umami flavor.'
+            },
+            'mozzarella-sticks': {
+                name: 'Mozzarella Sticks',
+                price: '₹799',
+                description: 'Golden crispy breaded mozzarella cheese sticks served with our house-made marinara sauce. Perfect for sharing or as a delicious starter.',
+                image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop&crop=center',
+                category: 'Crispy',
+                type: 'VEG',
+                ingredients: ['Mozzarella Cheese', 'Breadcrumbs', 'Flour', 'Eggs', 'Marinara Sauce'],
+                calories: 420,
+                protein: '18g',
+                carbs: '28g',
+                fat: '26g',
+                allergens: ['Contains Dairy', 'Contains Gluten', 'Contains Eggs'],
+                chefNote: 'We use premium mozzarella and double-bread each stick for the perfect crispy exterior and gooey center.'
+            },
+            'stuffed-mushrooms': {
+                name: 'Stuffed Mushrooms',
+                price: '₹899',
+                description: 'Large button mushrooms stuffed with a savory mixture of cream cheese, herbs, and breadcrumbs, then baked to perfection.',
+                image: 'https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=400&h=300&fit=crop&crop=center',
+                category: 'Baked',
+                type: 'VEG',
+                ingredients: ['Button Mushrooms', 'Cream Cheese', 'Fresh Herbs', 'Breadcrumbs', 'Garlic'],
+                calories: 320,
+                protein: '12g',
+                carbs: '18g',
+                fat: '24g',
+                allergens: ['Contains Dairy', 'Contains Gluten'],
+                chefNote: 'We select only the freshest mushrooms and stuff them with our signature herb and cheese blend.'
+            },
+            'bruschetta': {
+                name: 'Bruschetta',
+                price: '₹849',
+                description: 'Toasted artisan bread topped with fresh diced tomatoes, basil, garlic, and a drizzle of extra virgin olive oil. A taste of Italy!',
+                image: 'https://images.unsplash.com/photo-1506280754576-f6fa8a873550?auto=format&fit=crop&w=1000&q=80',
+                category: 'Italian',
+                type: 'VEG',
+                ingredients: ['Artisan Bread', 'Fresh Tomatoes', 'Basil', 'Garlic', 'Olive Oil'],
+                calories: 250,
+                protein: '6g',
+                carbs: '35g',
+                fat: '10g',
+                allergens: ['Contains Gluten'],
+                chefNote: 'We use only the ripest tomatoes and freshest basil, with bread toasted to the perfect golden crisp.'
+            },
+            'veggie-spring-rolls': {
+                name: 'Veggie Spring Rolls',
+                price: '₹699',
+                description: 'Crispy spring rolls filled with fresh vegetables and served with sweet and sour dipping sauce. Light, healthy, and delicious.',
+                image: 'images.jpg',
+                category: 'Healthy',
+                type: 'VEG',
+                ingredients: ['Spring Roll Wrapper', 'Cabbage', 'Carrots', 'Bean Sprouts', 'Sweet & Sour Sauce'],
+                calories: 180,
+                protein: '4g',
+                carbs: '32g',
+                fat: '4g',
+                allergens: ['Contains Gluten'],
+                chefNote: 'Our spring rolls are hand-rolled daily with the freshest seasonal vegetables for maximum crunch and flavor.'
+            },
+            'paneer-tikka': {
+                name: 'Paneer Tikka',
+                price: '₹1199',
+                description: 'Cubes of cottage cheese marinated in yogurt and spices, then grilled to perfection. Served with mint chutney and onion rings.',
+                image: 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400&h=300&fit=crop&crop=center',
+                category: 'Spicy',
+                type: 'VEG',
+                ingredients: ['Paneer', 'Yogurt', 'Indian Spices', 'Bell Peppers', 'Mint Chutney'],
+                calories: 380,
+                protein: '22g',
+                carbs: '12g',
+                fat: '28g',
+                allergens: ['Contains Dairy'],
+                chefNote: 'Our paneer is made fresh daily and marinated for hours in traditional spices for authentic flavor.'
+            },
+
+            // Non-Vegetarian Appetizers
+            'chicken-wings': {
+                name: 'Buffalo Chicken Wings',
+                price: '₹1199',
+                description: 'Crispy chicken wings tossed in our signature buffalo sauce, served with blue cheese dip and celery sticks. Perfect for sharing!',
+                image: 'https://images.unsplash.com/photo-1608039755401-742074f0548d?w=400&h=300&fit=crop&crop=center',
+                category: 'Spicy',
+                type: 'NON-VEG',
+                ingredients: ['Chicken Wings', 'Buffalo Sauce', 'Blue Cheese', 'Celery', 'Hot Sauce'],
+                calories: 450,
+                protein: '28g',
+                carbs: '8g',
+                fat: '35g',
+                allergens: ['Contains Dairy'],
+                chefNote: 'Our wings are marinated overnight and cooked to crispy perfection, then tossed in our house-made buffalo sauce.'
+            },
+            'shrimp-cocktail': {
+                name: 'Shrimp Cocktail',
+                price: '₹1449',
+                description: 'Fresh jumbo shrimp served chilled with our tangy cocktail sauce and lemon wedges. A classic seafood appetizer.',
+                image: 'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=300&fit=crop&crop=center',
+                category: 'Fresh',
+                type: 'NON-VEG',
+                ingredients: ['Jumbo Shrimp', 'Cocktail Sauce', 'Lemon', 'Lettuce', 'Horseradish'],
+                calories: 220,
+                protein: '24g',
+                carbs: '12g',
+                fat: '8g',
+                allergens: ['Contains Shellfish'],
+                chefNote: 'We source only the freshest jumbo shrimp and serve them perfectly chilled with our signature cocktail sauce.'
+            },
+
+            // Vegetarian Main Courses
+            'veggie-pasta': {
+                name: 'Vegetable Pasta',
+                price: '₹1299',
+                description: 'Penne pasta tossed with seasonal vegetables in a rich tomato basil sauce. Topped with fresh parmesan and herbs.',
+                image: 'pasta.jpg',
+                category: 'Popular',
+                type: 'VEG',
+                ingredients: ['Penne Pasta', 'Seasonal Vegetables', 'Tomato Sauce', 'Basil', 'Parmesan'],
+                calories: 520,
+                protein: '18g',
+                carbs: '78g',
+                fat: '16g',
+                allergens: ['Contains Gluten', 'Contains Dairy'],
+                chefNote: 'We use only the finest Italian pasta and fresh seasonal vegetables for this hearty and satisfying dish.'
+            },
+            'margherita-pizza': {
+                name: 'Margherita Pizza',
+                price: '₹1449',
+                description: 'Classic Neapolitan pizza with fresh mozzarella, tomato sauce, and basil leaves on our hand-tossed dough.',
+                image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop&crop=center',
+                category: 'Classic',
+                type: 'VEG',
+                ingredients: ['Pizza Dough', 'Mozzarella', 'Tomato Sauce', 'Fresh Basil', 'Olive Oil'],
+                calories: 680,
+                protein: '28g',
+                carbs: '85g',
+                fat: '26g',
+                allergens: ['Contains Gluten', 'Contains Dairy'],
+                chefNote: 'Our pizza dough is made fresh daily and topped with the finest Italian ingredients for an authentic taste.'
+            },
+
+            // Non-Vegetarian Main Courses
+            'grilled-salmon': {
+                name: 'Grilled Salmon',
+                price: '₹1899',
+                description: 'Fresh Atlantic salmon fillet grilled to perfection and served with lemon herb butter, roasted vegetables, and wild rice.',
+                image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=300&fit=crop&crop=center',
+                category: 'Healthy',
+                type: 'NON-VEG',
+                ingredients: ['Atlantic Salmon', 'Lemon Herb Butter', 'Roasted Vegetables', 'Wild Rice', 'Fresh Herbs'],
+                calories: 650,
+                protein: '45g',
+                carbs: '35g',
+                fat: '32g',
+                allergens: ['Contains Fish'],
+                chefNote: 'Our salmon is sourced fresh daily and grilled to maintain its natural flavors and omega-3 richness.'
+            },
+            'ribeye-steak': {
+                name: 'Ribeye Steak',
+                price: '₹2499',
+                description: 'Premium 12oz ribeye steak grilled to your preference, served with garlic mashed potatoes and seasonal vegetables.',
+                image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop&crop=center',
+                category: 'Premium',
+                type: 'NON-VEG',
+                ingredients: ['Ribeye Steak', 'Garlic Mashed Potatoes', 'Seasonal Vegetables', 'Herb Butter', 'Black Pepper'],
+                calories: 850,
+                protein: '55g',
+                carbs: '28g',
+                fat: '58g',
+                allergens: ['Contains Dairy'],
+                chefNote: 'Our ribeye is aged for 21 days for maximum tenderness and flavor, then grilled to perfection over high heat.'
+            },
+
+            // Desserts
+            'chocolate-cake': {
+                name: 'Chocolate Cake',
+                price: '₹699',
+                description: 'Rich, moist chocolate cake layered with chocolate ganache and served with vanilla ice cream and fresh berries.',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop&crop=center',
+                category: 'Sweet',
+                type: 'VEG',
+                ingredients: ['Dark Chocolate', 'Flour', 'Eggs', 'Butter', 'Vanilla Ice Cream'],
+                calories: 580,
+                protein: '8g',
+                carbs: '72g',
+                fat: '28g',
+                allergens: ['Contains Gluten', 'Contains Dairy', 'Contains Eggs'],
+                chefNote: 'Made with premium Belgian chocolate and baked fresh daily for the ultimate chocolate experience.'
+            },
+            'tiramisu': {
+                name: 'Tiramisu',
+                price: '₹799',
+                description: 'Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream, dusted with cocoa powder.',
+                image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop&crop=center',
+                category: 'Italian',
+                type: 'VEG',
+                ingredients: ['Ladyfingers', 'Mascarpone', 'Coffee', 'Cocoa Powder', 'Marsala Wine'],
+                calories: 420,
+                protein: '6g',
+                carbs: '45g',
+                fat: '24g',
+                allergens: ['Contains Gluten', 'Contains Dairy', 'Contains Eggs', 'Contains Alcohol'],
+                chefNote: 'Our tiramisu is made with authentic Italian mascarpone and strong espresso for the perfect balance of flavors.'
+            },
+
+            // Beverages
+            'fresh-lemonade': {
+                name: 'Fresh Lemonade',
+                price: '₹399',
+                description: 'Freshly squeezed lemon juice mixed with sparkling water and mint leaves. Refreshing and revitalizing.',
+                image: 'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400&h=300&fit=crop&crop=center',
+                category: 'Refreshing',
+                type: 'VEG',
+                ingredients: ['Fresh Lemons', 'Sparkling Water', 'Mint Leaves', 'Sugar', 'Ice'],
+                calories: 120,
+                protein: '0g',
+                carbs: '32g',
+                fat: '0g',
+                allergens: ['None'],
+                chefNote: 'Made with freshly squeezed lemons and garnished with garden-fresh mint for the perfect summer refresher.'
+            },
+            'craft-beer': {
+                name: 'Craft Beer',
+                price: '₹599',
+                description: 'Selection of local craft beers including IPA, wheat beer, and lager. Ask your server for today\'s featured brews.',
+                image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&h=300&fit=crop&crop=center',
+                category: 'Local',
+                type: 'ALCOHOL',
+                ingredients: ['Malted Barley', 'Hops', 'Yeast', 'Water'],
+                calories: 180,
+                protein: '2g',
+                carbs: '15g',
+                fat: '0g',
+                allergens: ['Contains Gluten', 'Contains Alcohol'],
+                chefNote: 'We partner with local breweries to bring you the freshest craft beers with unique flavors and character.'
+            },
+            'green-smoothie': {
+                name: 'Green Smoothie',
+                price: '₹549',
+                description: 'Healthy blend of spinach, apple, banana, and coconut water. Packed with vitamins and natural energy.',
+                image: 'https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=400&h=300&fit=crop&crop=center',
+                category: 'Healthy',
+                type: 'VEG',
+                ingredients: ['Fresh Spinach', 'Apple', 'Banana', 'Coconut Water', 'Honey'],
+                calories: 180,
+                protein: '4g',
+                carbs: '42g',
+                fat: '1g',
+                allergens: ['None'],
+                chefNote: 'A perfect blend of fruits and greens that tastes amazing while providing essential nutrients and energy.'
+            },
+            'mojito': {
+                name: 'Fresh Mojito',
+                price: '₹699',
+                description: 'Classic Cuban cocktail with white rum, fresh mint leaves, lime juice, sugar, and soda water. Refreshingly perfect.',
+                image: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&h=300&fit=crop&crop=center',
+                category: 'Refreshing',
+                type: 'ALCOHOL',
+                ingredients: ['White Rum', 'Fresh Mint', 'Lime Juice', 'Sugar', 'Soda Water'],
+                calories: 220,
+                protein: '0g',
+                carbs: '18g',
+                fat: '0g',
+                allergens: ['Contains Alcohol'],
+                chefNote: 'Made with premium white rum and muddled fresh mint for an authentic Cuban experience.'
+            },
+            'iced-coffee': {
+                name: 'Iced Coffee',
+                price: '₹449',
+                description: 'Cold brew coffee served over ice with vanilla syrup and a splash of cream. Perfect pick-me-up for any time of day.',
+                image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop&crop=center',
+                category: 'Energizing',
+                type: 'VEG',
+                ingredients: ['Cold Brew Coffee', 'Vanilla Syrup', 'Cream', 'Ice'],
+                calories: 150,
+                protein: '2g',
+                carbs: '22g',
+                fat: '6g',
+                allergens: ['Contains Dairy'],
+                chefNote: 'Our cold brew is steeped for 12 hours to extract maximum flavor without the bitterness.'
+            },
+            'wine-selection': {
+                name: 'Wine Selection',
+                price: '₹999',
+                description: 'Curated selection of red and white wines from renowned vineyards. Ask your sommelier for pairing recommendations.',
+                image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&h=300&fit=crop&crop=center',
+                category: 'Premium',
+                type: 'ALCOHOL',
+                ingredients: ['Premium Grapes', 'Natural Sulfites'],
+                calories: 125,
+                protein: '0g',
+                carbs: '4g',
+                fat: '0g',
+                allergens: ['Contains Alcohol', 'Contains Sulfites'],
+                chefNote: 'Our wine selection is carefully curated to complement our menu, with options from both local and international vineyards.'
+            }
+        };
+
+        // Get food ID from URL parameters
+        function getFoodIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('food') || 'caesar-salad';
+        }
+
+        // Load food details
+        function loadFoodDetails() {
+            const foodId = getFoodIdFromUrl();
+            const food = foodData[foodId];
+            
+            if (!food) {
+                // If food not found, show default
+                document.getElementById('food-name').textContent = 'Food Item Not Found';
+                return;
+            }
+
+            // Update all elements with food data
+            document.getElementById('food-name').textContent = food.name;
+            document.getElementById('food-price').textContent = food.price;
+            document.getElementById('food-description').textContent = food.description;
+            document.getElementById('food-category').textContent = food.category;
+            document.getElementById('food-type').textContent = food.type;
+            
+            // Update type styling
+            const typeElement = document.getElementById('food-type');
+            if (food.type === 'VEG') {
+                typeElement.className = 'bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold';
+            } else if (food.type === 'NON-VEG') {
+                typeElement.className = 'bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold';
+            } else {
+                typeElement.className = 'bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold';
+            }
+
+            // Update image
+            const imageContainer = document.getElementById('food-image');
+            imageContainer.innerHTML = `<img src="${food.image}" alt="${food.name}" class="w-full h-full object-cover">`;
+
+            // Update ingredients
+            const ingredientsContainer = document.getElementById('food-ingredients');
+            ingredientsContainer.innerHTML = food.ingredients.map(ingredient => 
+                `<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">${ingredient}</span>`
+            ).join('');
+
+            // Update nutritional info
+            document.getElementById('calories').textContent = food.calories;
+            document.getElementById('protein').textContent = food.protein;
+            document.getElementById('carbs').textContent = food.carbs;
+            document.getElementById('fat').textContent = food.fat;
+
+            // Update allergens
+            const allergensContainer = document.getElementById('allergens');
+            allergensContainer.innerHTML = food.allergens.map(allergen => 
+                `<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">${allergen}</span>`
+            ).join('');
+
+            // Update chef's note
+            document.getElementById('chef-note').textContent = food.chefNote;
+
+            // Update page title
+            document.title = `${food.name} - Delicious Bites`;
+        }
+
+        // Navigation functions
+        function goHome() {
+            window.location.href = 'food-detail.html';
+        }
+
+        function goBack() {
+            if (document.referrer && document.referrer.includes('deliciousbites')) {
+                window.history.back();
+            } else {
+                window.location.href = 'complete-menu.html';
+            }
+        }
+
+        // Load food details when page loads
+        document.addEventListener('DOMContentLoaded', loadFoodDetails);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96f24fc384d6de40',t:'MTc1NTE5NDAwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
